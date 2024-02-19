@@ -23,12 +23,12 @@ export default function ProductsCollection() {
 
     function onNextProducts () {
         if (index + 2 >= products.length) {
-            setIndex(0);
+            setIndex(0); 
         } else {
             setIndex(index + 2);
         }
     }
-
+    
     useEffect(() => {
         if (sessionStorage.getItem('products')) {
             setProducts(JSON.parse(sessionStorage.getItem('products')).sort(sortProducts));
@@ -39,7 +39,7 @@ export default function ProductsCollection() {
             .then(response => response.json())
             .then(data => {
                 let filteredData = data.products.filter(product => {
-                    let match = true;
+                    let match = Object.values(givenAnswers).length > 0;
 
                     Object.values(givenAnswers).forEach((answer) => {
                         answer.split("/").forEach((a) => {
@@ -55,7 +55,7 @@ export default function ProductsCollection() {
                 setProducts(filteredData);
                 sessionStorage.setItem('products', JSON.stringify(filteredData));
             })
-            .catch(error => console.error('Error fetching products:', error));
+            .catch(error => console.error('Error fetching products:', error));   
         }
     }, [])
     let li =[...Array(Math.ceil(products ? products.length / 2 : 0))].map((e, i) => <li className={`dot ${index / 2 == i ? 'active' : ''}`} key={i}></li>)
@@ -92,12 +92,12 @@ export default function ProductsCollection() {
                 </div>
                 {products && products[index] ? (
                     <div className="product-card">
-                        <Product product={products[index]}/>
+                        <Product product={products[index]}/>    
                     </div>
                 ) : <div></div>}
                 {products && products[index+1] ? (
                     <div className="product-card">
-                        <Product product={products[index+1]}/>
+                        <Product product={products[index+1]}/>    
                     </div>
                 ) : <div></div>}
             </div>
