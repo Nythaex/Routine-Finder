@@ -1,0 +1,139 @@
+.collection-picture {
+    width: 1440px;
+    height: 539px;
+    filter: brightness(45%);
+}
+
+.content-container {
+    width: 583px;
+    height: 330px;
+    gap: 32px;
+    top: 91px;
+    left:429px;
+}
+
+.content-container h1 {
+    margin: 0;
+    width: 583px;
+    height: 88px;
+    font-family: 'Grange';
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 44px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.content-container p {
+    margin-bottom: 0;
+    height: 131px;
+    width: 563px;
+    font-family: 'Proxima Nova';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.retake {
+    width: 238px;
+    height: 47px;
+    border-radius: 8px;
+    padding: 14px, 40px, 14px, 40px;
+    gap: 8px;
+    border: #FFFFFF solid 1px;
+    background-color: transparent;
+    font-family: "Proxima Nova";
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19.49px;
+    color: #FFFFFF;
+}
+
+.products-container {
+    display: flex;
+    position: absolute;
+    width: 1122px;
+    height: 421px;
+    gap: 36px;
+    top: 470px;
+    left: 159px;
+}
+
+.product-card {
+    background-color: white;
+    width: 350px;
+    height: 420px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.product-card.products-info {
+    background-color: #EEF7FB;
+}
+
+.product-card.products-info > div {
+    top: 46px;
+}
+
+.product-card > div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card h2 {
+    margin-top: 0;
+    width: 165px;
+    height: 19px;
+    font-family: 'Grange';
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 26.4px;
+    align-self: center;
+    color: #1C2635;
+}
+
+.product-card p {
+    width: 231px;
+    height: 289px;
+    font-family: 'Proxima Nova';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    align-self: center;
+    color: #1C2635;
+}
+
+.next-products {
+    position: absolute;
+    left: 1310px;
+    top: 670px;
+    width: 60px;
+    height: 60px;
+    border-radius: 30.03px;
+    background-color: #EEF7FB;
+    border: none;
+}
+
+.carousel-indicators {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 923px;
+    left: 699px;
+    gap: 8px;
+}
+
+.carousel-indicators .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 10px;
+    background-color: #E3E3E3;
+}
+
+.carousel-indicators .dot.active {
+    background-color: #5BC1ED
+}

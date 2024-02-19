@@ -1,0 +1,51 @@
+.product-image {
+    width: 350px;
+    height: 345px;
+    border-radius: 8px;
+}
+
+.product-info {
+    width: 350px;
+    height: 57px;
+    gap: 6px;
+}
+
+.product-info > h3 {
+    margin: 0px;
+    font-family: 'Grange';
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 26.4px;
+    text-align: center;
+}
+
+.product-info > p {
+    margin: 0px;
+    font-family: 'Grange';
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 19.8px;
+    text-align: center;
+    color: #1C2635;
+    height: 25.5px;
+}
+
+.product-card > div.heart-icon {
+    position: absolute;
+    width: 20px;
+    height: 18.35px;
+    top: 19.65px;
+    left: 312px;
+    
+    border-image: radial-gradient(grey 70%, #0000 70%) 84.5%/50%;
+    clip-path: polygon(-41% 0, 50% 91%, 141% 0);
+}
+
+div.heart-icon:hover {
+    cursor: pointer;
+    border-image: radial-gradient(red 70%, #0000 70%) 84.5%/50%;
+}
+
+.product-card > div.heart-icon-active {
+    border-image: radial-gradient(red 70%, #0000 70%) 84.5%/50%;
+}
