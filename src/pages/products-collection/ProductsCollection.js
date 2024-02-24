@@ -23,17 +23,17 @@ export default function ProductsCollection() {
 
     function onNextProducts () {
         if (index + 2 >= products.length) {
-            setIndex(0); 
+            setIndex(0);
         } else {
             setIndex(index + 2);
         }
     }
-    
+
     useEffect(() => {
         if (sessionStorage.getItem('products')) {
             setProducts(JSON.parse(sessionStorage.getItem('products')).sort(sortProducts));
         } else {
-            fetch('https://jeval.com.au/collections/hair-care/products.json', {
+            fetch('https://jeval.com.au/collections/hair-care/products.json?page=1', {
                 method: "GET",
             })
             .then(response => response.json())
@@ -53,23 +53,24 @@ export default function ProductsCollection() {
                     return match;
                 }).sort(sortProducts);
                 setProducts(filteredData);
+                console.log(filteredData);
                 sessionStorage.setItem('products', JSON.stringify(filteredData));
             })
-            .catch(error => console.error('Error fetching products:', error));   
+            .catch(error => console.error('Error fetching products:', error));
         }
     }, [])
     let li =[...Array(Math.ceil(products ? products.length / 2 : 0))].map((e, i) => <li className={`dot ${index / 2 == i ? 'active' : ''}`} key={i}></li>)
 
 
     return (
-        <>
+        <div id="collection-page">
             <img
                 className="collection-picture"
                 src={productsCollection}
                 alt="img"/>
             <div className="content-container">
-                    <h1>Build you everyday self care routine.</h1>
-                    <p>Perfect for if you're looking for soft, nourished skin, our moisturizing body washes are made with skin-natural nutrients that work with your skin to replenish moisture.
+                <h1>Build you everyday self care routine.</h1>
+                 <p>Perfect for if you're looking for soft, nourished skin, our moisturizing body washes are made with skin-natural nutrients that work with your skin to replenish moisture.
                         With a light formula, the bubbly lather leaves your skin feeling cleansed and cared for. And by choosing relaxing fragrances you can add a moment of calm to the end of your day.</p>
 
                 <Link to={`/`}>
@@ -77,37 +78,40 @@ export default function ProductsCollection() {
                 </Link>
             </div>
 
-            <div className="products-container">
-                <div className="product-card products-info">
-                    <div>
-                        <h2>
-                            Daily routine
-                        </h2>
-                        <p>
-                            Perfect for if you're looking for soft, nourished skin, our moisturizing body washes are made with skin-natural nutrients that work with your skin to replenish moisture.
-                            With a light formula, the bubbly lather leaves your skin feeling cleansed and cared for.
-                            And by choosing relaxing fragrances you can add a moment of calm to the end of your day.
-                        </p>
+            <div className="products-collection">
+                <div className="products-container">
+                    <div className="product-card products-info">
+                        <div>
+                            <h2>
+                                Daily routine
+                            </h2>
+                            <p>
+                                Perfect for if you're looking for soft, nourished skin, our moisturizing body washes are made with skin-natural nutrients that work with your skin to replenish moisture.
+                                With a light formula, the bubbly lather leaves your skin feeling cleansed and cared for.
+                                And by choosing relaxing fragrances you can add a moment of calm to the end of your day.
+                            </p>
+                        </div>
                     </div>
-                </div>
-                {products && products[index] ? (
-                    <div className="product-card">
-                        <Product product={products[index]}/>    
-                    </div>
-                ) : <div></div>}
-                {products && products[index+1] ? (
-                    <div className="product-card">
-                        <Product product={products[index+1]}/>    
-                    </div>
-                ) : <div></div>}
-            </div>
-            <button className="next-products" onClick={()=>onNextProducts()} style={{display: products && products.length > 0 ? 'block' : 'none' }}>
-                <GrFormNextLink />
-            </button>
+                    {products && products[index] ? (
+                        <div className="product-card">
+                            <Product product={products[index]}/>
+                        </div>
+                    ) : <div></div>}
+                    {products && products[index+1] ? (
+                        <div className="product-card">
+                            <Product product={products[index+1]}/>
+                        </div>
+                    ) : <div></div>}
 
-            <ul className="carousel-indicators">
+                    <button className="next-products" onClick={()=>onNextProducts()} style={{display: products && products.length > 0 ? 'block' : 'none' }}>
+                        <GrFormNextLink />
+                    </button>
+                </div>
+
+                <ul className="carousel-indicators">
                 {li}
-            </ul>
-        </>
+                </ul>
+            </div>
+        </div>
   )
 }

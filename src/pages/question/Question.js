@@ -64,7 +64,7 @@ export default function Question () {
   function onAnswerClick (page, answerValue) {
     updateGivenAnswers({ ...givenAnswers, [page]: answerValue })
   }
-  
+
   let questionsCount = Object.keys(questions).length;
   let page = params.id;
   if (page < 1 || page > questionsCount) {
@@ -82,22 +82,28 @@ export default function Question () {
     </li>
   );
   return (
-    <>
-      <div className="counter" style={{ '--p': `${(page/questionsCount)*100}` }}>{page+'/'+questionsCount}</div>
-      <div className='question'> 
-        <h1>
-          {questions[page].question}
-        </h1>
-        <ul>{answers}</ul>
-        <div className='navigation-buttons'>
-          <Link to={"/"+prevPage}>
-            <p className="back" type="button">Back</p>
-          </Link>
-          <Link to={"/"+nextPage}>
-            <button className="next" type="button"> { page == questionsCount ? 'Discover your results' : 'Next question' } <GrFormNextLink /> </button>
-          </Link>
+    <div id='question-page'>
+      <div className="content">
+        <div className='question'>
+          <h1>
+            {questions[page].question}
+          </h1>
+          <ul>{answers}</ul>
+          <div className='navigation-buttons'>
+            <Link to={"/"+prevPage}>
+              <p className="back" type="button">Back</p>
+            </Link>
+            <Link to={"/"+nextPage}>
+              <button  className="next" type="button"> { page == questionsCount ? 'Discover your results' : 'Next question' } <GrFormNextLink /> </button>
+            </Link>
+          </div>
         </div>
+        <div className="counter" style={{ '--p': `${(page/questionsCount)*100}` }}>{page+'/'+questionsCount}</div>
       </div>
-    </>
+    </div>
   )
 }
+
+//If you want to make the button that redirect to next question to be disabled if there is no answer, add 'disabled={ givenAnswers[page] ? false : true}' on line 97.
+//Its not implemented because there are no products that match all the questions simultaneously from the given url 'https://jeval.com.au/collections/hair-care/products.json?page=1'.
+//There is another url 'https://jeval.com.au/collections/hair-care/products.json?page=2', but this url is not given in figma as endpoint.

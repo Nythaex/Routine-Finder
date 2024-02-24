@@ -10,12 +10,12 @@ export default function Home () {
         updateGivenAnswers({})
     }
     return (
-        <>
+        <div id='home-page'>
             <img
                 className="home-picture"
                 src={png}
                 alt="img"/>
-            <div className="content-container">
+            <div className="home-content-container">
                 <div className="text-container">
                     <h1>Build a self care routine suitable for you</h1>
                     <p>Take out test to get a personalised self care routine based on your needs.</p>
@@ -24,6 +24,6 @@ export default function Home () {
                     <button id="start-button" type="button" onClick={onStart}>Start the quiz</button>
                 </Link>
             </div>
-        </>
+        </div>
   )
 }

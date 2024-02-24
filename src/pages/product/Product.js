@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 export default function Product ({product}) {
     const [liked, setLiked] = useState(sessionStorage.getItem(product.id));
-    
+
     function onWishlistClick() {
         if(sessionStorage.getItem(product.id)) {
             sessionStorage.removeItem(product.id);
